@@ -139,7 +139,7 @@ session_start();
 
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
@@ -203,7 +203,7 @@ session_start();
 
           </ul><!-- End Messages Dropdown Items -->
 
-        </li><!-- End Messages Nav -->
+        </li><!-- End Messages Nav --> --}}
 
         <li class="nav-item dropdown pe-3">
 
@@ -302,12 +302,12 @@ session_start();
     </a>
     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>
-        <a href="forms-elements.html">
+        <a href="{{ route('product.index') }}">
         <i class="bi bi-circle"></i><span>Hamma Tavarlar</span>
         </a>
     </li>
     <li>
-        <a href="forms-elements.html">
+        <a href="{{ route('product.create') }}">
         <i class="bi bi-circle"></i><span>Tavar Yaratish</span>
         </a>
     </li>
@@ -418,7 +418,7 @@ session_start();
 
 </aside><!-- End Sidebar-->
 <div class="container my-5 p-4">
-@yield('content')
+    @yield('content')
 </div>
 
   <!-- ======= Footer ======= -->

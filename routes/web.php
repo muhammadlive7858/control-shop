@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashbord;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SotuvOfisi;
-use App\Models\Category;
+// use App\Models\Product;
+// use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,8 @@ Route::get('index',function(){
 Route::get('dashbord',[Dashbord::class,"index"])->name('dashbord');
 // Kategoriya route
 Route::resource('category',CategoryController::class)->names('category');
+Route::resource('product',ProductController::class)->names('product');
 // Sotuv
 Route::get('shopping',[SotuvOfisi::class,'index'])->name('shop-index');
 Route::get('show-cate',[SotuvOfisi::class,'showcate'])->name('shop-show-cate');
+
