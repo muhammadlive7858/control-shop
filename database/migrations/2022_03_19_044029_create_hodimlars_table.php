@@ -16,6 +16,11 @@ class CreateHodimlarsTable extends Migration
         Schema::create('hodimlars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('name');
+            $table->string('desc')->nullable();
+            $table->string('image')->nullable();
+            $table->string('phone');
         });
     }
 

@@ -13,8 +13,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.indexMain');
+    {   
+        $cate = Category::all();
+        return view('category.index',compact('cate'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -34,8 +35,14 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        // dd($request->input());
+        $store = Category::create($request->input());
+        if($store){
+            return redirect()->route('category.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -55,9 +62,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $cate = Category::find($id);
+        return view('category.edit',compact('cate'));
     }
 
     /**
@@ -67,9 +75,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
+    public function update(Request $request,$id)
+    {   
+        // dd($request);
+        $cate = Category::find($id);
+        $update = $cate->update($request->input());
+        if($update){
+            return redirect()->route('category.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -78,8 +93,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $cate = Category::find($id);
+        $delete = $cate->delete($id);
+        
+        return redirect()->back();
     }
 }
