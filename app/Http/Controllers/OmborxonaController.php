@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Omborxona;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OmborxonaController extends Controller
@@ -14,7 +16,7 @@ class OmborxonaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,8 +36,8 @@ class OmborxonaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
     }
 
     /**
@@ -44,9 +46,9 @@ class OmborxonaController extends Controller
      * @param  \App\Models\Omborxona  $omborxona
      * @return \Illuminate\Http\Response
      */
-    public function show(Omborxona $omborxona)
+    public function show()
     {
-        //
+        
     }
 
     /**

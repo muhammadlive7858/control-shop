@@ -20,9 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('category_id');
             $table->string('desc')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('price');
-            
+            $table->integer('producttime');
+            $table->integer('count');
         });
     }
 

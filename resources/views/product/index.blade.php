@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <h1>Hamma Tavarlar sahifasi</h1>
-    <table class="table table-bordered">
+    <h1 class="w-100">Hamma Tavarlar sahifasi</h1>
+    <table class="table table-bordered w-100">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -11,7 +11,7 @@
                     <th scope="col">Kategoriya</th>
                     <th>Rasm</th>
                     <th>Narxi</th>
-                    <th scope="col" colspan="2">Malumoti</th>
+                    <th scope="col">ID raqami</th>
                     <th scope="col" style="width:10% !important">Amallar</th>
                 </tr>
             </thead>
@@ -23,7 +23,7 @@
                     <td>{{ $prod->category_id }}</td>
                     <td>{{ $prod->image }}</td>
                     <td>{{ $prod->price }}</td>
-                    <td colspan="2">{{ $prod->desc }}</td>
+                    <td>{{ $prod->producttime }}</td>
                     <td  class="d-flex align-center justify-content-around">
                         <a href="{{ route('product.edit',$prod->id) }}" class="mt-2"><i class="bi bi-pencil btn-success w-100 p-2" style='border-radius:5px'></i></a>
                         <form action="{{ route('product.destroy',$prod->id) }}" method="post" class="d-flex align-center ">

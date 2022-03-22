@@ -38,7 +38,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = Product::create($request->input());
+        if($store){
+            return redirect()->route('product.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -81,8 +86,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
-    {
-        //
+    public function destroy($id){
+        $delete = Product::find($id);
+        $del = $delete->delete();
+        if($del){
+        return redirect()->back();
+        }
     }
 }

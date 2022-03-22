@@ -11,13 +11,18 @@
     </select>
     <button class="btn btn-primary mx-2">Tanlandi</button>
 </form>
-<div class="header  d-flex align-items-center justify-content-between">
-    <h3>Tavar topish</h3>
-<div class="search-bar">
-    <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-    </form>
+<form class="row g-3 d-flex justify-content-between align-center form-control m-1" action="">
+    <h4 class="col-md-6">Tavar ID raqamini kiriting:</h4>
+    <div class="div col-md-6 d-flex aling-center justify-content-between">
+    <div class="col-auto" style="width:80%">
+        <label for="inputPassword2" class="visually-hidden">Tavar</label>
+        <input type="productid" class="form-control" id="inputPassword2" placeholder="">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Topish</button>
+    </div>
+    </div>
+</form>
 </div>
 </div>
 <!-- End Search Bar -->
