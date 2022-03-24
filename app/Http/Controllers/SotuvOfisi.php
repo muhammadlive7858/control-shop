@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class SotuvOfisi extends Controller
 {   
-    public array = [];
+    // public array = [];
     public function index(){
         $cate = Category::all();
         $product = Product::all();
