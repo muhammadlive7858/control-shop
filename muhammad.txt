@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 qoloy
 
 abbos negap
@@ -9,3 +10,8 @@ gap yoq
 negap
 
 gitgo bu oxir
+=======
+abbosdan qayta 
+>>>>>>> 333f230c81e2b72f437d05b5dfc03b40314cbd36
+
+muhammaddan qayta
