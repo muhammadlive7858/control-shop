@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Search;
 use Illuminate\Http\Request;
 
 class SotuvOfisi extends Controller
@@ -22,10 +23,14 @@ class SotuvOfisi extends Controller
         return view('shop.index',compact('product','cate'));
     }
     public function productid(Request $request){
+
         $cate = Category::all();
         $product = Product::all()->where('producttime',$request->input('productid'));
+        
+        
+
         // dd($product);
-        return view('shop.index',compact('product','cate'));
+        return view('shop.create',compact('product','cate'));
 
     }
 }
