@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hodimlar;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 
 class HodimlarController extends Controller
@@ -14,7 +16,8 @@ class HodimlarController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('users.index',compact('user'));
     }
 
     /**
@@ -24,7 +27,7 @@ class HodimlarController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -35,7 +38,17 @@ class HodimlarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = User::create([
+            'name' => $request->name,
+            'email'=> $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password)
+        ]);
+        if($store){
+            return redirect()->route('users.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -44,9 +57,10 @@ class HodimlarController extends Controller
      * @param  \App\Models\Hodimlar  $hodimlar
      * @return \Illuminate\Http\Response
      */
-    public function show(Hodimlar $hodimlar)
-    {
-        //
+    public function show($id)
+    {   
+        $user = User::find($id);
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -55,9 +69,10 @@ class HodimlarController extends Controller
      * @param  \App\Models\Hodimlar  $hodimlar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hodimlar $hodimlar)
-    {
-        //
+    public function edit($id)
+    {   
+        $user = User::all()->where('id',$id);
+        return view('users.edit',compact('user'));
     }
 
     /**
@@ -67,9 +82,20 @@ class HodimlarController extends Controller
      * @param  \App\Models\Hodimlar  $hodimlar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hodimlar $hodimlar)
+    public function update(Request $request,$id)
     {
-        //
+        $user = User::find($id);
+        $update = $user->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'role'=>$request->role,
+            'password'=>Hash::make($request->password),
+        ]);
+        if($update){
+            return redirect()->route('users.index');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
@@ -78,8 +104,10 @@ class HodimlarController extends Controller
      * @param  \App\Models\Hodimlar  $hodimlar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hodimlar $hodimlar)
+    public function destroy($id)
     {
-        //
+        $delete = User::find($id);
+        $delete->delete();
+        return redirect()->back();
     }
 }

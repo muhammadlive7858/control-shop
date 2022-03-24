@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashbord;
+use App\Http\Controllers\HodimlarController;
 use App\Http\Controllers\OmborxonaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SotuvOfisi;
@@ -39,9 +40,12 @@ Route::resource('category',CategoryController::class)->names('category');
 Route::resource('product',ProductController::class)->names('product');
 // Sotuv
 Route::get('shopping',[SotuvOfisi::class,'index'])->name('shop-index');
+Route::get('product-id',[SotuvOfisi::class,'productid'])->name('product-id');
 Route::get('show-cate',[SotuvOfisi::class,'showcate'])->name('shop-show-cate');
 
 // sklad
 Route::get('omborxona',[sklad::class,'index'])->name('ombor');
-Route::patch('search',[sklad::class,'show'])->name('search');
+Route::post('search',[sklad::class,'show'])->name('search');
+// users
+Route::resource('users',HodimlarController::class)->names('users');
 

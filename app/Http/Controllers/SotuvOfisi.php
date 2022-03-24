@@ -8,13 +8,24 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SotuvOfisi extends Controller
-{
+{   
+    public array = [];
     public function index(){
         $cate = Category::all();
-        return view('shop.index',compact('cate'));
+        $product = Product::all();
+        return view('shop.index',compact('cate','product'));
     }
     public function showcate(Request $request){
-        $product = Product::find('id',$request->cateid);
-        dd($product);
+        $cate = Category::all();
+        $product = Product::all()->where('category_id',$request->input('cateid'));
+        // dd($product);
+        return view('shop.index',compact('product','cate'));
+    }
+    public function productid(Request $request){
+        $cate = Category::all();
+        $product = Product::all()->where('producttime',$request->input('productid'));
+        // dd($product);
+        return view('shop.index',compact('product','cate'));
+
     }
 }

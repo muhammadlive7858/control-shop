@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.index')
+
 
 @section('content')
 <div class="container">
@@ -8,7 +9,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('users.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -56,6 +57,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

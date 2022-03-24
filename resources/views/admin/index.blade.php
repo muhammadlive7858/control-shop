@@ -47,8 +47,8 @@ session_start();
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <span class="d-none d-lg-block">Control Shop</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -214,15 +214,15 @@ session_start();
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>{{Auth::user()->name}}</h6>
+              <span>{{Auth::user()->role}}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('users.show',Auth::user()->id) }}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -231,7 +231,7 @@ session_start();
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
@@ -249,13 +249,13 @@ session_start();
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> -->
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
+              <button class="w-100 btn btn-outline-danger">Sign Out</button>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -354,9 +354,9 @@ session_start();
 <li class="nav-heading">Adminstrator</li>
 
 <li class="nav-item">
-    <a class="nav-link collapsed" href="">
+    <a class="nav-link collapsed" href="{{ route('users.index') }}">
     <i class="bi bi-person"></i>
-    <span>Profile</span>
+    <span>Users</span>
     </a>
 </li><!-- End Profile Page Nav -->
 
@@ -375,7 +375,7 @@ session_start();
 </li><!-- End Contact Page Nav -->
 
 <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
+    <a class="nav-link collapsed" href="{{ route('users.create') }}">
     <i class="bi bi-card-list"></i>
     <span>Register</span>
     </a>

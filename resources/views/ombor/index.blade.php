@@ -2,9 +2,9 @@
 
 @section('content')
     
-    <form action="" method="get" class="form-control w-100" >
+    <form action="{{ route('search') }}" method="POST" class="form-control w-100" >
         @csrf
-        @method('PATCH')
+        @method('POST')
         <select name="category_id" id="" class="form-select m-2" style="width:99%">
             <option value="">Kategoriyani tanlang</option>
             @foreach($cate as $cate)
@@ -25,32 +25,23 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    use App\Models\Product;
-                    $product = Product::all()->where('category_id',$_GET['category_id']);
-                    foreach($product as $prod){
-                        echo`<tr>
-                            <td scope="row">{{ $prod->id }}</th>
-                            <td>{{$prod['name']}}</td>
-                            <td>{{$prod['image']}}</td>
-                            <td>{{$prod['producttime']}}</td>
-                            <td>{{$prod['price']}}</td>
-                            <td>{{$prod['count']}}</td>
-                        </tr> `;
-                    }
-                ?>
+                @forelse($product as $prod)
+                    <tr>
+                        <td>{{ $prod->id }}</td>
+                        <td>{{ $prod->name }}</td>
+                        <td>{{ $prod->image }}</td>
+                        <td>{{ $prod->price }}</td>
+                        <td>{{ $prod->producttime }}</td>
+                        <td>{{ $prod->count }}</td>
+                    </tr>
+                @empty
+                    <h4>Hozircha Kategoriya tanlanmagan yoki kategoriyada tavar mavjud emas</h4>
+                @endforelse
             </tbody>
         </table>
 
 @endsection
 
-<!-- <tr>
-    <td scope="row">//{{ $prod->id }}</th>
-    <td>//{{$prod['name']}}</td>
-    <td>//{{$prod['image']}}</td>
-    <td>//{{$prod['producttime']}}</td>
-    <td>//{{$prod['price']}}</td>
-    <td>//{{$prod['count']}}</td>
-</tr> -->
+
 
 

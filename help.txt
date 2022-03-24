@@ -63,3 +63,72 @@
         <i class="bi bi-circle"></i><span>Tooltips</span>
         </a>
     </li>
+
+
+
+
+
+
+
+
+
+
+    @forelse($product as $prod)
+    <table class="table table-bordered w-100">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nomi</th>
+                    <th scope="col">Kategoriya</th>
+                    <th>Rasm</th>
+                    <th>Narxi</th>
+                    <th scope="col">ID raqami</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+                <tr>
+                    <td scope="row">{{ $prod->id }}</th>
+                    <td>{{ $prod->name }}</td>
+                    <td>{{ $prod->category_id }}</td>
+                    <td>{{ $prod->image }}</td>
+                    <td>{{ $prod->price }}</td>
+                    <td>{{ $prod->producttime }}</td>
+                </tr>
+                
+            </tbody>
+    </table>
+    @empty
+    <h1>Hozircha Tavarlar mavjud emas</h1>
+    @endforelse
+
+
+
+
+
+
+
+
+
+
+
+
+@foreach($cate as $cat)
+    <table class="table table-bordered w-100">
+        <thead>
+            <tr>
+                <th>$cat->name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach($product as $prod)
+                    @if($prod->category_id === $cat->id)
+                        <td>$prod->name</td>
+                    @endif
+                @endforeach
+            </tr>
+        </tbody>
+    </table>
+
+@endforeach
