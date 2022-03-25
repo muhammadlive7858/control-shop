@@ -1,19 +1,11 @@
 @extends('admin.index')
 
 @section('content')
+
+
 <h2>Sotuv Ofisi</h2>
 <hr>
-<form action="{{ route('shop-show-cate') }}" method="" class="form-control d-flex mb-3 p-2">
-    @csrf
-    @method('get')
-    <select class="form-select p-2" aria-label="Default select example" name="cateid">
-        <option selected>Tavar bo'limini tanlang</option>
-        @foreach($cate as $cat)
-            <option name="" value="{{ $cat->id }}">{{ $cat->name }}</option>
-        @endforeach
-    </select>
-    <button class="btn btn-primary mx-2">Tanlandi</button>
-</form>
+
 
 
 <form class="row g-3 d-flex justify-content-between align-center form-control m-1" action="{{ route('product-id') }}">
@@ -33,39 +25,42 @@
 <hr>
 
 
-    <table class="table table-bordered w-100">
+
+        <form action="{{ route('sotish') }}" method="post">
+            @csrf
+
+            <table class="table table-bordered w-100">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nomi</th>
-                    <th scope="col">Kategoriya</th>
-                    <th>Rasm</th>
-                    <th>Narxi</th>
-                    <th scope="col">ID raqami</th>
-                    <th scope="col" style="width:10% !important">Amallar</th>
+                    <th scope="col" style="width:10%">#</th>
+                    <th scope="col">Tavar nomi</th>
+                    <th scope="col" style="width:10%">mavjud</th>
+                    <th scope="col" style="width:20% !important">Sotilmoqda...</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($product as $prod)
-                <tr>
-                    <td scope="row">{{ $prod->id }}</th>
-                    <td>{{ $prod->name }}</td>
-                    <td>{{ $prod->category_id }}</td>
-                    <td>{{ $prod->image }}</td>
-                    <td>{{ $prod->price }}</td>
-                    <td>{{ $prod->producttime }}</td>
-                    <td  class="d-flex align-center justify-content-around">
-                        <a href="{{ route('product.edit',$prod->id) }}" class="mt-2"><i class="bi bi-pencil btn-success w-100 p-2" style='border-radius:5px'></i></a>
-                        <form action="{{ route('product.destroy',$prod->id) }}" method="post" class="d-flex align-center ">
+                @forelse($prod_vaqt as $prod)
+                    <tr>
+                        <td scope="row" style="width:10%">{{ $prod->product_id }}</th>
+                        <td>{{ $prod->product_name }}</td>
+                        <td style="width:10%">{{ $prod->product_count }}</td>
+                        <td class="d-flex justify-content-around align-center">
                             @csrf
-                            @method('delete')
-                        <button class="btn-danger w-100 p-1 "style='border-radius:5px' ><i class="bi bi-trash-fill " ></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <h6>Bunday ID yoq</h6>
-                @endforelse
-            </tbody>
-        </table>
+                            @method('POST')
+                            <input type="number" name="sotish_soni:number[]" id="" class="form-control" placeholder="Tavarlar soni:">
+                            <input class="p-2 m-2 " style="width:50px" type="checkbox" name="prod_id:number[]" id="" value="{{ $prod->id }}">
+                        </td>
+                    </tr>
+                    @empty
+                    <h1>Tavar yoq</h1>
+                    @endforelse
+                </tbody>
+            </table>
+            <button  class="btn btn-primary">Sotish</button>
+            <a href="{{ route('tozalash') }}" class="btn btn-danger">Tozalash</a>
+        </form>
+        <!-- <label for="sotish" class="btn btn-primary">Sotish</label> -->
+
+
+
 @endsection

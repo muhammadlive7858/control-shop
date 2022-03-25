@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <a href="{{ route('admin.index') }}">admin panel</a>
+                <a href="{{ route('admin.index') }}" class="btn btn-outline-primary">admin panel</a>
+            </div>
+            <div class="map">
+                <iframe src="" frameborder="0"></iframe>
             </div>
         </div>
     </div>
