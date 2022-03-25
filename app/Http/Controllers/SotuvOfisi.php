@@ -39,9 +39,31 @@ class SotuvOfisi extends Controller
         return view('shop.create',compact('cate','prod_vaqt'));
 
     }
-    public function sotish(){
-        
+    public function sotish(Request $request){
+        // dd($request);
+        foreach($request->prod_id as $sotish){
+            $i = 0;
+            $prod = Product::find($sotish[$i]);
+            $prod_count = $prod['count'];
+            foreach($request->sotish_soni as $count){
+                $prod = $prod->update([
+                    'count' => $prod_count - $count[$i]
+                ]);
+            }
+        }
 
+        $vaqt = vaqtincha::get();
+        foreach($vaqt as $vaqt){
+            $delete = $vaqt->delete();
+        }
+        if(true){
+            return redirect()->route('shop-index');
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+    public function tozalash(){
         $vaqt = vaqtincha::get();
         foreach($vaqt as $vaqt){
             $delete = $vaqt->delete();

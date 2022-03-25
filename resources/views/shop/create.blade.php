@@ -25,7 +25,10 @@
 
 <hr>
 
-<table class="table table-bordered w-100">
+        <form action="{{ route('sotish') }}" method="post">
+            @csrf
+
+            <table class="table table-bordered w-100">
             <thead>
                 <tr>
                     <th scope="col" style="width:10%">#</th>
@@ -37,25 +40,25 @@
             <tbody>
                 @forelse($prod_vaqt as $prod)
                     <tr>
-                        <td scope="row" style="width:10%">{{ $prod->id }}</th>
+                        <td scope="row" style="width:10%">{{ $prod->product_id }}</th>
                         <td>{{ $prod->product_name }}</td>
                         <td style="width:10%">{{ $prod->product_count }}</td>
-                        <td>
-                        <form action="{{ route('sotish') }}" method="post">
+                        <td class="d-flex justify-content-around align-center">
                             @csrf
                             @method('POST')
-                            <input type="hidden" name="prod_id" value="{{ $prod->id }}">
-                            <input type="number" name="sotish_soni" id="" class="form-control" placeholder="Tavarlar soni:">
-                        </form>
+                            <input type="number" name="sotish_soni:number[]" id="" class="form-control" placeholder="Tavarlar soni:">
+                            <input class="p-2 m-2 " style="width:50px" type="checkbox" name="prod_id:number[]" id="" value="{{ $prod->id }}">
                         </td>
                     </tr>
-                @empty
-                <h1>Tavar yoq</h1>
-                @endforelse
-            </tbody>
-        </table>
+                    @empty
+                    <h1>Tavar yoq</h1>
+                    @endforelse
+                </tbody>
+            </table>
+            <button  class="btn btn-primary">Sotish</button>
+            <a href="{{ route('tozalash') }}" class="btn btn-danger">Tozalash</a>
+        </form>
         <!-- <label for="sotish" class="btn btn-primary">Sotish</label> -->
-        <a href="{{ route('sotish') }}" class="btn btn-primary">Sotish</a>
 
 
 

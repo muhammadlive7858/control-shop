@@ -12,6 +12,7 @@
                     <th>Rasm</th>
                     <th>Narxi</th>
                     <th scope="col">ID raqami</th>
+                    <th>Mavjud</th>
                     <th scope="col" style="width:10% !important">Amallar</th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                     <td>{{ $prod->image }}</td>
                     <td>{{ $prod->price }}</td>
                     <td>{{ $prod->producttime }}</td>
+                    <td>{{ $prod->count }}</td>
                     <td  class="d-flex align-center justify-content-around">
                         <a href="{{ route('product.edit',$prod->id) }}" class="mt-2"><i class="bi bi-pencil btn-success w-100 p-2" style='border-radius:5px'></i></a>
                         <form action="{{ route('product.destroy',$prod->id) }}" method="post" class="d-flex align-center ">

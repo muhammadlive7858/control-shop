@@ -42,7 +42,8 @@ Route::resource('product',ProductController::class)->names('product');
 Route::get('shopping',[SotuvOfisi::class,'index'])->name('shop-index');
 Route::get('product-id',[SotuvOfisi::class,'productid'])->name('product-id');
 Route::get('show-cate',[SotuvOfisi::class,'showcate'])->name('shop-show-cate');
-Route::get('sotish',[SotuvOfisi::class,'sotish'])->name('sotish');
+Route::post('sotish',[SotuvOfisi::class,'sotish'])->name('sotish');
+Route::get('tozalash',[Sotuvofisi::class,'tozalash'])->name('tozalash');
 
 // sklad
 Route::get('omborxona',[sklad::class,'index'])->name('ombor');
