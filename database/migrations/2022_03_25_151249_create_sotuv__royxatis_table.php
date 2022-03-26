@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVaqtinchasTable extends Migration
+class CreateSotuvRoyxatisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateVaqtinchasTable extends Migration
      */
     public function up()
     {
-        Schema::create('vaqtinchas', function (Blueprint $table) {
+        Schema::create('sotuv__royxatis', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->integer('product_id');
-            $table->string('product_name');
-            $table->integer('product_count');
-            $table->integer('price');
+            $table->string('tolav_turi');
+            $table->string('tavar');
+            $table->string('sotilgan_summa');
+            $table->string('foyda');
+            $table->string('skidka');
+
         });
     }
 
@@ -31,6 +33,6 @@ class CreateVaqtinchasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vaqtinchas');
+        Schema::dropIfExists('sotuv__royxatis');
     }
 }

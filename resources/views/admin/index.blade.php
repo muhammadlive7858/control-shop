@@ -252,10 +252,10 @@ session_start();
             </li> -->
 
             <li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
                 @csrf
+                <button class="w-100 btn btn-outline-danger">Sign Out</button>
               </form>
-              <button class="w-100 btn btn-outline-danger">Sign Out</button>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->

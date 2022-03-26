@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('desc')->nullable();
             $table->string('image')->nullable();
             $table->integer('price');
+            $table->string('shop_price');
             $table->integer('producttime');
             $table->integer('count');
         });
