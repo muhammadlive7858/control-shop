@@ -36,6 +36,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {   
+        $validate = $request->validate([
+            'name'=>'required',
+            'desc'=>'nullable'
+        ]);
         // dd($request->input());
         $store = Category::create($request->input());
         if($store){
