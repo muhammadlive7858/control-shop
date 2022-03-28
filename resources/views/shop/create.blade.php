@@ -49,7 +49,7 @@
                             @csrf
                             @method('POST')
                             <input type="number" name="sotish_soni[]" id="" class="form-control" placeholder="Tavarlar soni:">
-                            <input class="p-2 m-2 input-control " style="width:50px" type="checkbox" name="prod_id[]" id="" value="{{ $prod->product_id }}">
+                            <input class="p-2 m-2 input-control " style="width:50px" type="hidden" name="prod_id[]" id="" value="{{ $prod->product_id }}">
                         </td>
                     </tr>
                     @empty

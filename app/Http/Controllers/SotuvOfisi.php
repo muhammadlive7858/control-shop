@@ -18,12 +18,6 @@ class SotuvOfisi extends Controller
         $product = Product::all();
         return view('shop.index',compact('cate','product'));
     }
-    // public function showcate(Request $request){
-    //     $cate = Category::all();
-    //     $product = Product::all()->where('category_id',$request->input('cateid'));
-    //     // dd($product);
-    //     return view('shop.index',compact('product','cate'));
-    // }
     public function productid(Request $request){
         $cate = Category::all();
         $product = Product::all()->where('producttime',$request->input('productid'));
@@ -36,13 +30,8 @@ class SotuvOfisi extends Controller
             ]);
         }
         $prod_vaqt = vaqtincha::all();
-        $som = 0;
-        foreach($prod_vaqt as $pul){
-            $som = $som + $pul['shop_price'];
-        }
-        
         // dd($product);
-        return view('shop.create',compact('cate','prod_vaqt','som'));
+        return view('shop.create',compact('cate','prod_vaqt'));
 
     }
     public function sotish(Request $request){
@@ -50,22 +39,40 @@ class SotuvOfisi extends Controller
         // dd($request->sotish_soni[0]);
         $i = 0;
         foreach($request->prod_id as $prod_id){
-            // dd(intval($prod_id[$i]));
-            // $product = Product::find(intval($prod_id[$i]));
             $s = intval($prod_id);
-           // dd($s);
             $pro = Product::where('id', $s )->get();
-            // // dd($product);
-            // dd($product->count);
             foreach($pro as $pro){
             $update = $pro->update([
                 'count' => $pro->count - intval($request->sotish_soni[$i])
             ]);
 
             }
-            // dd($product);
             $i = $i + 1;
 
+        }
+        // dd($request->prod_id);
+        $i = 0;
+        foreach($request->prod_id as $prod){
+            $product = Product::all()->where('id',intval($prod))->first();
+            // dd($product);
+            $name[$i] = $product->name;
+            $f[$i] = intval($product->shop_price) - $product->price;
+            $i++;
+        }
+        $i = 0;
+        foreach($request->sotish_soni as $sotish){
+            // $sotish = $request->sotish_soni;
+            // dd($request->skidka);
+            $count = $sotish;
+            $foyda = $f[$i] * intval($sotish);
+            $skidka = intval($request->skidka) / array_sum($request->sotish_soni);
+            $royxat = Sotuv_Royxati::create([
+                'product_name' => $name[$i],
+                'count'=>$count,
+                'foyda'=>$foyda,
+                'skidka'=>$skidka,
+            ]);
+            $i++;
         }
         
 

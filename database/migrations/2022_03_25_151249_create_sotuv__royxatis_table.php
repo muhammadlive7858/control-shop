@@ -17,9 +17,8 @@ class CreateSotuvRoyxatisTable extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('tolav_turi');
-            $table->string('tavar');
-            $table->string('sotilgan_summa');
+            $table->string('product_name');
+            $table->integer('count');
             $table->string('foyda');
             $table->string('skidka');
 
