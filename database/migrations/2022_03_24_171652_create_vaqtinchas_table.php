@@ -20,6 +20,7 @@ class CreateVaqtinchasTable extends Migration
             $table->integer('product_id');
             $table->string('product_name');
             $table->integer('product_count');
+            $table->integer('price');
         });
     }
 

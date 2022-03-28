@@ -34,6 +34,7 @@
                 <tr>
                     <th scope="col" style="width:10%">#</th>
                     <th scope="col">Tavar nomi</th>
+                    <th style="width:10%">Narxi</th>
                     <th scope="col" style="width:10%">mavjud</th>
                     <th scope="col" style="width:20% !important">Sotilmoqda...</th>
                 </tr>
@@ -43,12 +44,13 @@
                     <tr>
                         <td scope="row" style="width:10%">{{ $prod->product_id }}</th>
                         <td>{{ $prod->product_name }}</td>
+                        <td>{{ $prod->price }}</td>
                         <td style="width:10%">{{ $prod->product_count }}</td>
                         <td class="d-flex justify-content-around align-center">
                             @csrf
                             @method('POST')
-                            <input type="number" name="sotish_soni:number[]" id="" class="form-control" placeholder="Tavarlar soni:">
-                            <input class="p-2 m-2 " style="width:50px" type="checkbox" name="prod_id:number[]" id="" value="{{ $prod->id }}">
+                            <input type="number" name="sotish_soni[]" id="" class="form-control" placeholder="Tavarlar soni:">
+                            <input class="p-2 m-2 input-control " style="width:50px" type="hidden" name="prod_id[]" id="" value="{{ $prod->product_id }}">
                         </td>
                     </tr>
                     @empty
@@ -56,6 +58,22 @@
                     @endforelse
                 </tbody>
             </table>
+            
+            <hr>
+            <div class="w-100 d-flex align-center justify-content-between">
+                <div class="div w-50 d-flex align-center justify-content-center mx-1">
+                    <h4 class="w-50">To'lav turini tanlang</h4>
+                    <select name="tolav_turi" id="" class="form-control w-50">
+                        <option value="Naxt">Naxt</option>
+                        <option value="Plastik">Plastik</option>
+                    </select>
+                </div>
+                <div class="div w-50 d-flex align-center justify-content-center mx-1">
+                    <h4 class="w-50">Qaytim pulini kiriting:</h4>
+                    <input type="number" name="skidka" id="" value="0" class="form-control  w-50">
+                </div>
+            </div>
+            <hr>
             <button  class="btn btn-primary">Sotish</button>
             <a href="{{ route('tozalash') }}" class="btn btn-danger">Tozalash</a>
         </form>

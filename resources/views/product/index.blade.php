@@ -11,6 +11,7 @@
                     <th scope="col">Kategoriya</th>
                     <th>Rasm</th>
                     <th>Narxi</th>
+                    <th>Sotilish narxi</th>
                     <th scope="col">ID raqami</th>
                     <th>Mavjud</th>
                     <th scope="col" style="width:10% !important">Amallar</th>
@@ -24,6 +25,7 @@
                     <td>{{ $prod->category_id }}</td>
                     <td>{{ $prod->image }}</td>
                     <td>{{ $prod->price }}</td>
+                    <td>{{ $prod->shop_price }}</td>
                     <td>{{ $prod->producttime }}</td>
                     <td>{{ $prod->count }}</td>
                     <td  class="d-flex align-center justify-content-around">

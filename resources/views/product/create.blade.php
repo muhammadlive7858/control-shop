@@ -17,6 +17,8 @@
             <input class="form-control" type="file" id="formFile" name="image">
         </div>
         <input type="number" name="price" class="input-control m-2 p-2" placeholder="Tavar narxini kiriting:">
+        <input type="number" name="shop_price" class="input-control m-2 p-2" placeholder="Tavarning sotilish narxini kiriting:">
+        
         <?php
         $time = time();
         echo '<input value="'.$time.'" type="hidden" name="producttime" class="input-control m-2 p-2" placeholder="Tavar uchun id raqam">' ;
