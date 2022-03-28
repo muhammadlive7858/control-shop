@@ -14,9 +14,13 @@ class OmborxonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        $s = $request->category_id;
+        $product = Product::where('category_id', $s)->get();
+        $cate = Category::paginate();
+
+        return view('ombor.search', compact('product' , 'cate'));
     }
 
     /**

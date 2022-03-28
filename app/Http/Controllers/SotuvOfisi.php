@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+
+
+use App\Models\Search;
+
 use App\Models\Sotuv_Royxati;
 use App\Models\vaqtincha;
-use DB;
+
 use Illuminate\Http\Request;
 
 class SotuvOfisi extends Controller
@@ -19,8 +23,14 @@ class SotuvOfisi extends Controller
         return view('shop.index',compact('cate','product'));
     }
     public function productid(Request $request){
+
         $cate = Category::all();
         $product = Product::all()->where('producttime',$request->input('productid'));
+        
+        
+
+        // dd($product);
+        // return view('shop.create',compact('product','cate'));
         foreach($product as $product){
             $vaqt = vaqtincha::create([
                     'product_id'=>$product['id'],
@@ -35,6 +45,17 @@ class SotuvOfisi extends Controller
 
     }
     public function sotish(Request $request){
+
+       // dd($request);
+        foreach($request->prod_id as $sotish){
+            $i = 0;
+            $prod = Product::find(($sotish[$i])*1);
+            $prod_count = $prod['count'];
+            foreach($request->sotish_soni as $count){
+                $prod = $prod->update([
+                    'count' => $prod_count - $count[$i]
+                ]);
+
         // dd($request->prod_id);
         // dd($request->sotish_soni[0]);
         $i = 0;
@@ -83,16 +104,21 @@ class SotuvOfisi extends Controller
             }
             if($delete){
                 return redirect()->route('shop-index');
+                $s = 10;
             }
             else{
                 return redirect()->back();
+
             }
         }
+    }
+}
         
-
+            
         
     }
     public function tozalash(){
+
         $vaqt = vaqtincha::get();
         foreach($vaqt as $vaqt){
             $delete = $vaqt->delete();
@@ -105,3 +131,4 @@ class SotuvOfisi extends Controller
         }
     }
 }
+    
