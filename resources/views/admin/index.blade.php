@@ -348,6 +348,12 @@ session_start();
         <i class="bi bi-circle"></i><span>Asosiy Omborxona</span>
         </a>
     </li>
+    <li class="nav-item">
+    <a class="nav-link collapsed"   href="{{route('qarz.index')}}">
+    <span> Qarz daftar</span>
+    </a>
+    
+</li><!-- End Icons Nav -->
     </ul>
 </li><!-- End Icons Nav -->
 
