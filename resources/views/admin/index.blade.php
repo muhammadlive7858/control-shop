@@ -94,20 +94,20 @@ session_start();
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Abbos</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{Auth::user()->name}}</h6>
-              <span>{{Auth::user()->role}}</span>
+              <h6>Abbos</h6>
+              <span>Director</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ route('users.show',Auth::user()->id) }}">
+              <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -330,7 +330,7 @@ session_start();
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="{{asset('assets/js/main.js')}}"></script>
 
 </body>
 

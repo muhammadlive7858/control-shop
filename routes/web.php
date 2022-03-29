@@ -52,6 +52,7 @@ Route::get('tozalash',[Sotuvofisi::class,'tozalash'])->name('tozalash');
 // sklad
 Route::get('omborxona',[sklad::class,'index'])->name('ombor');
 Route::post('search',[sklad::class,'show'])->name('search');
+Route::post('search' , [OmborxonaController::class , 'index'])->name('searchombor');
 // users
 Route::resource('users',HodimlarController::class)->names('users');
 // sotuv royxati

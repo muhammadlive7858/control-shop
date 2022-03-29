@@ -3,10 +3,9 @@
 @section('content')
 
 
-<!-- End Search Bar -->
-
 <h2>Sotuv Ofisi</h2>
 <hr>
+
 
 
 <form class="row g-3 d-flex justify-content-between align-center form-control m-1" action="{{ route('product-id') }}">
@@ -24,6 +23,8 @@
 </form>
 
 <hr>
+
+
 
         <form action="{{ route('sotish') }}" method="post">
             @csrf
