@@ -16,7 +16,7 @@
                 @foreach($cate as $cate)
                 <tr>
                     <td scope="row">{{ $cate->id }}</th>
-                    <td>{{ $cate->name }}</td>
+                    <td class="d-flex"><a  class="mx-1" href="{{route('category.show', $cate->id)}}">{{ $cate->name }}</a><i class="bi bi-folder-fill"></i></td>
                     <td colspan="2">{{ $cate->desc }}</td>
                     <td  class="d-flex align-center justify-content-around">
                         <a href="{{ route('category.edit',$cate->id) }}" class="mt-2"><i class="bi bi-pencil btn-success w-100 p-2" style='border-radius:5px'></i></a>
