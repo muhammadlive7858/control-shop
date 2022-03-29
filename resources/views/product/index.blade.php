@@ -22,7 +22,7 @@
                 <tr>
                     <td scope="row">{{ $prod->id }}</th>
                     <td>{{ $prod->name }}</td>
-                    <td>{{ $prod->category_id }}</td>
+                    <td>{{ $prod->category->name}}</td>
                     <td>{{ $prod->image }}</td>
                     <td>{{ $prod->price }}</td>
                     <td>{{ $prod->shop_price }}</td>

@@ -7,6 +7,7 @@ use App\Http\Controllers\OmborxonaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SotuvOfisi;
 use App\Http\Controllers\sklad;
+use App\Http\Controllers\QarzCantroller;
 // use App\Models\Product;
 // use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,5 @@ Route::post('search',[sklad::class,'show'])->name('search');
 Route::post('search' , [OmborxonaController::class , 'index'])->name('searchombor');
 // users
 Route::resource('users',HodimlarController::class)->names('users');
-Route::resource('Qarz' , QarzCantroller::class)->names('qarz');
+
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -55,9 +56,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        
+        $s = intval($id);
+        //dd($s);
+        $pro = Product::where('category_id', $s)->get();
+        return view('category.show', compact('pro'));
     }
 
     /**
