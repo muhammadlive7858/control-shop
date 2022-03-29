@@ -35,6 +35,7 @@ class SotuvOfisi extends Controller
 
     }
     public function sotish(Request $request){
+        // dd();
         // dd($request->prod_id);
         // dd($request->sotish_soni[0]);
         $i = 0;
@@ -65,7 +66,7 @@ class SotuvOfisi extends Controller
             // dd($request->skidka);
             $count = $sotish;
             $foyda = $f[$i] * intval($sotish);
-            $skidka = intval($request->skidka) / array_sum($request->sotish_soni);
+            $skidka = intval($request->skidka) / count($request->sotish_soni);
             $royxat = Sotuv_Royxati::create([
                 'product_name' => $name[$i],
                 'count'=>$count,

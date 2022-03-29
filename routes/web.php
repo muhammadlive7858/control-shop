@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashbord;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HodimlarController;
 use App\Http\Controllers\OmborxonaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SotuvOfisi;
 use App\Http\Controllers\sklad;
+use App\Http\Controllers\Sotuvlar;
+use App\Models\Sotuv_Royxati;
+use App\Http\Controllers\QarzController;
 // use App\Models\Product;
 // use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +54,11 @@ Route::get('omborxona',[sklad::class,'index'])->name('ombor');
 Route::post('search',[sklad::class,'show'])->name('search');
 // users
 Route::resource('users',HodimlarController::class)->names('users');
+// sotuv royxati
+Route::get('sotuv-royxat',[Sotuvlar::class,'index'])->name('sotuvlar');
+Route::get('sotuv-edit/{id}',[Sotuvlar::class,'edit'])->name('sotuvedit');
+Route::post('update/{id}',[Sotuv_Royxati::class,'update'])->name('sotuvupdate');
+Route::delete('delete/{id}',[Sotuv_Royxati::class,'destroy'])->name('sotuvdestroy');
 
+// email
+Route::resource('qarz',QarzController::class)->names('qarz');
