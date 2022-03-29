@@ -10,7 +10,6 @@ use App\Http\Controllers\SotuvOfisi;
 use App\Http\Controllers\sklad;
 use App\Http\Controllers\Sotuvlar;
 use App\Models\Sotuv_Royxati;
-use App\Http\Controllers\QarzController;
 // use App\Models\Product;
 // use App\Models\Category;
 use Illuminate\Support\Facades\Route;

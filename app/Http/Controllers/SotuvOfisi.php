@@ -45,9 +45,7 @@ class SotuvOfisi extends Controller
 
     }
     public function sotish(Request $request){
-        // dd();
 
-       // dd($request);
         foreach($request->prod_id as $sotish){
             $i = 0;
             $prod = Product::find(($sotish[$i])*1);
